@@ -1,7 +1,11 @@
+import sys
 
+sys.path.append('./DataStructures/')
 
-""" Implementation of a binary search tree in python using classes. leftchild < parent < rightchild"""
-
+""" 
+	Implementation of a binary search tree in python using classes. leftchild < parent < rightchild.
+	All of the methods are defined in the Node class right now for simplicity.
+"""
 class Node:
 	node_list = []
 	def __init__(self, data: int):
@@ -26,10 +30,7 @@ class Node:
 			else:
 				node.rightchild = self.insert(node.rightchild, elem)
 		return node
-	'''Print tree in a fashioned way'''
-	def print_tree(self):
-		pass
-
+	
 	""" Tree traversals """
 	def pre_order(self, node):
 
@@ -83,23 +84,22 @@ class Node:
 			if curr.rightchild is not None:
 				queue.append(curr.rightchild)
 
-
-
-
-
+def print_tree(root, level=0, prefix="Root: "):
+    if root is not None:
+        print(" " * (level * 4) + prefix + str(root.data))
+        if root.leftchild is not None or root.rightchild is not None:
+            print_tree(root.leftchild, level + 1, "L--- ")
+            print_tree(root.rightchild, level + 1, "R--- ")
 		
 if __name__ == "__main__":
 
-	root = Node(2)
-	bst_nodes = [4, 3, 7, 6, 5, 1]
+	root = Node(100)
+	bst_nodes = [50, 200, 40, 60, 150, 300]
 	for node in bst_nodes:
 		root.insert(root, node)
 	print(f'BST Nodes -> {Node.node_list}')
-	# root.in_order(root)
-	#root.pre_order(root)
-	root.level_order(root)
+	print_tree(root)
 
-# nodes = int(input("Enter the number of nodes ->"))
 
 
 

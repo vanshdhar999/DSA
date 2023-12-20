@@ -2,6 +2,10 @@
 	
 	Time Complexity: O(logn)
 """
+import sys
+sys.path.append('./Algorithms/')
+
+
 import math
 class BinarySearch():
 
